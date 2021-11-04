@@ -1,13 +1,15 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { selectUser } from "../../features/userSlice";
+import { selectUser, selectCurrentPlan } from "../../features/userSlice";
 import { auth } from "../../firebase";
 import Navbar from "../Navbar/Navbar";
+import PlanScreen from "../PlanScreen/PlanScreen";
 import "./ProfileScreen.css";
 
 function ProfileScreen() {
   const user = useSelector(selectUser);
-  console.log("**@ profilescreen user is , ", user);
+  const currentSubscriptionPlan = useSelector(selectCurrentPlan);
+  console.log("**@ currentSubscriptionPlan is , ", currentSubscriptionPlan);
 
   const signOut = (e) => {
     e.preventDefault();
@@ -27,7 +29,10 @@ function ProfileScreen() {
           <div className="profileScreen__details">
             <h2>{user.email}</h2>
             <div className="profileScreen__plans">
-              <h3>Plans</h3>
+              <h3>
+                Plans : Current Plan:-{currentSubscriptionPlan?.currentPlan}
+              </h3>
+              <PlanScreen />
               <button
                 onClick={(e) => signOut(e)}
                 className="profileScreen__signout"

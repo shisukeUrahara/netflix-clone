@@ -11,8 +11,6 @@ function Row({ title, fetchUrl, isLargeRow = false }) {
       const response = await axios.get(fetchUrl);
 
       setMovies(response.data.results);
-      console.log("**@ each row title  is , ", title);
-      console.log("**@ each row movies are , ", movies);
 
       return response;
     };

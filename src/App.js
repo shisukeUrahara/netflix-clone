@@ -15,7 +15,6 @@ function App() {
   useEffect(() => {
     const init = async () => {
       const unsubscribe = await auth.onAuthStateChanged((userAuth) => {
-        console.log("**@ userAUth is , ", userAuth);
         if (userAuth) {
           // user is logged in
           dispatch(
